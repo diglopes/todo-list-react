@@ -1,7 +1,11 @@
 {
   "name": "todo-list-react",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server/loader.js",
+  "scripts": {
+    "dev": "nodemon",
+    "prod": "pm2 start src/loader.js --name todo-list"
+  },
   "repository": "git@github.com:diglopes/todo-list-react.git",
   "author": "Diego Lopes <diego-chez@hotmail.com>",
   "license": "MIT",
