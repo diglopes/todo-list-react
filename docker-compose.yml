@@ -5,8 +5,6 @@ services:
         container_name: 'todo-list-react'
         environment: 
             - MONGO_INITDB_DATABASE=todo
-            - MONGO_INITDB_ROOT_USERNAME=admin
-            - MONGO_INITDB_ROOT_PASSWORD=admin
         volumes: 
             - ./mongo-volume:/data/db
         ports: 
