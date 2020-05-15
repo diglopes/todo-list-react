@@ -4,5 +4,11 @@
   "main": "index.js",
   "repository": "git@github.com:diglopes/todo-list-react.git",
   "author": "Diego Lopes <diego-chez@hotmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.14",
+    "node-restful": "^0.2.6",
+    "pm2": "^4.4.0"
+  }
 }
