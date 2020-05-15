@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "server/loader.js",
   "scripts": {
-    "dev": "nodemon",
-    "prod": "pm2 start src/loader.js --name todo-list"
+    "start:dev": "nodemon",
+    "start:prod": "pm2 start server/loader.js --name todo-list"
   },
   "repository": "git@github.com:diglopes/todo-list-react.git",
   "author": "Diego Lopes <diego-chez@hotmail.com>",
