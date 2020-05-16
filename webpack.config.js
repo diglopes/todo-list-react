@@ -7,10 +7,10 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   mode: isDevMode ? "development" : "production",
-  entry: "./client/index.js",
+  entry: "./client/src/index.js",
   output: {
     path: path.resolve(__dirname, "client", "build"),
-    filename: "bundle.js",
+    filename: isDevMode ? "bundle.js" : "bundle.min.js",
   },
   optimization: {
     minimizer: [
@@ -31,9 +31,21 @@ module.exports = {
       filename: "styles.css",
     }),
     new HtmlWebPackPlugin({
-      template: path.resolve(__dirname, "client", "public", "index.html"),
+      template: path.resolve(
+        __dirname,
+        "client",
+        "src",
+        "public",
+        "index.html"
+      ),
       filename: "index.html",
-      favicon: path.resolve(__dirname, "client", "public", "favicon.ico"),
+      favicon: path.resolve(
+        __dirname,
+        "client",
+        "src",
+        "public",
+        "favicon.ico"
+      ),
     }),
   ],
   module: {
