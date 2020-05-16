@@ -1,10 +1,11 @@
 import React from 'react'
+import PageHeader from '@/components/PageHeader'
 
 export default props => {
 
     return (
         <div>
-            <h1>Todo</h1>
+            <PageHeader name="Tarefas" small="Cadastro"/>
         </div>
     )
 }
