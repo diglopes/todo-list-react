@@ -7,5 +7,6 @@ export default () => (
     <>
         <h1 className="display-1">Hello</h1>
         <button className="btn btn-info">Click</button>
+        <GlobalStyle/>
     </>
 )
