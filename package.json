@@ -23,7 +23,8 @@
     "node-restful": "^0.2.6",
     "pm2": "^4.4.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.7",
