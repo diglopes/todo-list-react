@@ -1,5 +1,6 @@
 import React from 'react'
 import GridColumn from '@/components/GridColumn'
+import IconButton from '@/components/IconButton'
 
 export default props => (
     <div role="form">
@@ -14,9 +15,7 @@ export default props => (
             </GridColumn>
 
             <GridColumn cols="12 3 2" className="col-sm-12 col-md-3 col-lg-2">
-                <button className="btn btn-primary">
-                    <i className="fa fa-plus"></i>
-                </button>
+                <IconButton style="primary" icon="plus"/>
             </GridColumn>
         </div>
     </div>
