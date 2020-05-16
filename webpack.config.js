@@ -70,12 +70,15 @@ module.exports = {
         ],
       },
       {
-        test: /\.(ico|png|jpg|jpeg|gif|svg)$/,
+        test: /\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
         use: ["file-loader"],
       },
     ],
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      "@modules": __dirname + "/node_modules",
+    },
   },
 };
