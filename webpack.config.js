@@ -12,6 +12,9 @@ module.exports = {
     path: path.resolve(__dirname, "client", "build"),
     filename: isDevMode ? "bundle.js" : "bundle.min.js",
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   optimization: {
     minimizer: [
       new OptimizeCssAssetsPlugin({}),
