@@ -6,6 +6,11 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         box-sizing: border-box;
     }
+
+    ul {
+        list-style: none;
+        margin: 0;
+    }
 `;
 
 export default GlobalStyle;
