@@ -1,3 +1,4 @@
 node_modules/
 *.log
 mongo-volume/
+build/
