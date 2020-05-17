@@ -11,6 +11,11 @@ const GlobalStyle = createGlobalStyle`
         list-style: none;
         margin: 0;
     }
+
+    .done {
+        text-decoration: line-through;
+        color: #999;
+    }
 `;
 
 export default GlobalStyle;
