@@ -10,12 +10,25 @@ const url = baseUrl + '/api/todo'
 
 export default props => {
     
+    useEffect(() => {
+        fetchTasks()
+    })
+
     const [description, setDescription] = useState("")
+    const [tasks, setTasks] = useState([])
+
 
     const handleAdd = () => {
          axios.post(url, {description}).then(({data}) => {
             setDescription("")
+            fetchTasks()
          })
+    }
+
+    const fetchTasks = () => {
+        axios.get(`${url}?sort=-createdAt`).then(({data}) => {
+            setTasks(data)
+        })
     }
 
     const handleDescriptionChange = e => {
@@ -30,7 +43,7 @@ export default props => {
                 description={description}
                 handleDescriptionChange={handleDescriptionChange}
             />
-            <TodoList />
+            <TodoList list={tasks}/>
         </div>
     )
 }
