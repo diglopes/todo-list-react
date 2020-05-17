@@ -51,12 +51,17 @@ export default props => {
         return updatedTaskList
     }
 
-    const fetchTasks = () => {   
-        console.log('hello');
-             
-        axios.get(`${url}?sort=-createdAt`).then(({data}) => {
+    const fetchTasks = (description = "") => {
+        const query = description ? `&description__regex=/${description}/i` : ""                
+        axios.get(`${url}?sort=-createdAt${query}`).then(({data}) => {
             setTasks(data)
         })
+    }
+
+    const handleSearch = () => {
+        console.log('teste...');
+        
+        fetchTasks(description)
     }
 
     const handleDescriptionChange = e => {
@@ -70,6 +75,7 @@ export default props => {
                 handleAdd={handleAdd} 
                 description={description}
                 handleDescriptionChange={handleDescriptionChange}
+                handleSearch={handleSearch}
             />
             <TodoList 
                 list={tasks} 
