@@ -27,7 +27,7 @@ export default props => {
         const isConfirmed = confirm('Realmente deseja excluir essa tarefa?')
         if(isConfirmed) {
             axios.delete(`${url}/${id}`).then(() => {
-                fetchTasks()
+                setTasks(getUpdatedList({ _id: id }, true))
             })
         }
     }
@@ -44,10 +44,10 @@ export default props => {
         })
     }
 
-    const getUpdatedList = (data) => {
+    const getUpdatedList = (data, remove) => {
         const index = tasks.findIndex(task => task._id === data._id)
         const updatedTaskList = [...tasks]
-        updatedTaskList[index] = data
+        remove ? updatedTaskList.splice(index, 1) : updatedTaskList[index] = data        
         return updatedTaskList
     }
 
