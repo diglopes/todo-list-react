@@ -7,7 +7,9 @@ export default props => {
         return list.map(item => 
             <tr key={item._id}>
                 <td>{item.description}</td>
-               
+                <td>
+                    <IconButton style="danger" icon="trash-o" onClick={() => props.handleRemove(item._id)}/>
+                </td>
             </tr>
         )
     }
@@ -16,6 +18,7 @@ export default props => {
             <thead>
                 <tr>
                     <th>Descrição</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>

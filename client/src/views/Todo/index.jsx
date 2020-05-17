@@ -25,6 +25,15 @@ export default props => {
          })
     }
 
+    const handleRemove = (id) => {
+        const isConfirmed = confirm('Realmente deseja excluir essa tarefa?')
+        if(isConfirmed) {
+            axios.delete(`${url}/${id}`).then(() => {
+                fetchTasks()
+            })
+        }
+    }
+
     const fetchTasks = () => {
         axios.get(`${url}?sort=-createdAt`).then(({data}) => {
             setTasks(data)
@@ -43,7 +52,7 @@ export default props => {
                 description={description}
                 handleDescriptionChange={handleDescriptionChange}
             />
-            <TodoList list={tasks}/>
+            <TodoList list={tasks} handleRemove={handleRemove}/>
         </div>
     )
 }
