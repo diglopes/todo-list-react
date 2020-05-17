@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: line-through;
         color: #999;
     }
+
+    .tableActions {
+        width: 150px
+    }
 `;
 
 export default GlobalStyle;
