@@ -44,6 +44,11 @@ export default props => {
         })
     }
 
+    const handleClear = () => {
+        setDescription("")
+        fetchTasks()
+    }
+
     const getUpdatedList = (data, remove) => {
         const index = tasks.findIndex(task => task._id === data._id)
         const updatedTaskList = [...tasks]
@@ -58,9 +63,7 @@ export default props => {
         })
     }
 
-    const handleSearch = () => {
-        console.log('teste...');
-        
+    const handleSearch = () => {        
         fetchTasks(description)
     }
 
@@ -76,6 +79,7 @@ export default props => {
                 description={description}
                 handleDescriptionChange={handleDescriptionChange}
                 handleSearch={handleSearch}
+                handleClear={handleClear}
             />
             <TodoList 
                 list={tasks} 
