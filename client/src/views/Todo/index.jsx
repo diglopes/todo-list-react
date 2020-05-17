@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+
 import PageHeader from '@/components/PageHeader'
 import TodoForm from '@/components/Todo/Form'
 import TodoList from '@/components/Todo/List'
 
+const baseUrl = process.env.NODE_ENV === 'development' ?  "http://localhost:3004" : ""
+const url = baseUrl + '/api/todo'
+
 export default props => {
+    
     const [description, setDescription] = useState("")
 
     const handleAdd = () => {
-        console.log('Adding...');   
+         axios.post(url, {description}).then(({data}) => {
+            setDescription("")
+         })
     }
 
     const handleDescriptionChange = e => {
@@ -16,7 +24,6 @@ export default props => {
 
     return (
         <div>
-            {description}
             <PageHeader name="Tarefas" small="Cadastro"/>
             <TodoForm 
                 handleAdd={handleAdd} 
