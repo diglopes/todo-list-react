@@ -6,7 +6,8 @@
     "start:dev": "nodemon",
     "start:prod": "pm2 start server/loader.js --name todo-list",
     "build:dev": "webpack-dev-server --open --mode development",
-    "build:prod": "cross-env NODE_ENV=production webpack --progress"
+    "build:prod": "cross-env NODE_ENV=production webpack --progress",
+    "deploy": "npm run build:prod && docker-compose up -d && npm run start:prod"
   },
   "repository": "git@github.com:diglopes/todo-list-react.git",
   "author": "Diego Lopes <diego-chez@hotmail.com>",
