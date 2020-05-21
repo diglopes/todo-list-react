@@ -1,10 +1,15 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
+import { connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
 import GridColumn from '@/components/GridColumn'
 import IconButton from '@/components/IconButton'
-import { changeDescription } from '../../store/actions/todo'
+import { changeDescription, search } from '../../store/actions/todo'
 
 const Form = props => {
+    useEffect(() => {
+        props.search()
+    }, [])
+
     const keyHandler = (e) => {
         if(e.key === 'Enter') {
             e.shiftKey ? props.handleSearch() : props.handleAdd()
@@ -23,7 +28,7 @@ const Form = props => {
                         className="form-control" 
                         placeholder="Adicione uma tarefa"
                         value={props.description}
-                        onChange={e => props.handleDescriptionChange(e.target.value)}
+                        onChange={e => props.changeDescription(e.target.value)}
                         onKeyUp={keyHandler}
                     />
                 </GridColumn>
@@ -39,11 +44,6 @@ const Form = props => {
 }
 
 const mapStateToProps = (state) => ({ description: state.todo.description })
-const mapDispatchToProps = (dispatch) => ({
-    handleDescriptionChange(description) {
-        const action = changeDescription(description)
-        dispatch(action)
-    }
-}) 
+const mapDispatchToProps = (dispatch) => bindActionCreators({ changeDescription, search }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form)
