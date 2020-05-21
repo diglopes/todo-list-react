@@ -26,6 +26,8 @@ This project was developed at [React course from Cod3r](https://www.cod3r.com.br
 - [Pm2](https://www.npmjs.com/package/pm2)
 - [ReactJS](https://reactjs.org/)
 - [React router](https://reacttraining.com/)
+- [Redux](https://redux.js.org/)
+- [React-redux](https://react-redux.js.org/)
 - [Styled-components](https://styled-components.com/)
 - [Webpack](https://webpack.js.org/)
 
