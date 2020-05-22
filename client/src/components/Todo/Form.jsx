@@ -20,6 +20,11 @@ const Form = props => {
         }
     }
 
+    const clear = () => {
+        search()
+        changeDescription("")
+    }
+
     return (
         <div role="form">
             <div className="row">
@@ -38,7 +43,7 @@ const Form = props => {
                 <GridColumn cols="12 3 2" className="col-sm-12 col-md-3 col-lg-2">
                     <IconButton style="primary" icon="plus" onClick={() => add(description)}/>
                     <IconButton style="info" icon="search" onClick={() => search(description)}/>
-                    <IconButton style="light" icon="close" onClick={props.handleClear}/>
+                    <IconButton style="light" icon="close" onClick={clear}/>
                 </GridColumn>
             </div>
         </div>
