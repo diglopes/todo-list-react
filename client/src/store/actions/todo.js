@@ -26,3 +26,11 @@ export function add(description) {
       .then(() => dispatch(search()));
   };
 }
+
+export function markAsDone(id) {
+  return (dispatch) => {
+    axios.put(`${URL}/${id}`, { done: true }).then(({ data }) => {
+      dispatch({ type: "MARKED_AS_DONE", payload: data });
+    });
+  };
+}

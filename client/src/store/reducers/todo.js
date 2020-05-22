@@ -14,6 +14,13 @@ export default (state = INITIAL_STATE, action) => {
       };
     case "TODO_CREATED":
       return { ...state, description: "" };
+    case "MARKED_AS_DONE":
+      return {
+        ...state,
+        list: state.list.map((item) => {
+          return item._id === action.payload._id ? action.payload : item;
+        }),
+      };
     default:
       return INITIAL_STATE;
   }
