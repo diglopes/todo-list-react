@@ -3,16 +3,24 @@ import { connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import GridColumn from '@/components/GridColumn'
 import IconButton from '@/components/IconButton'
-import { changeDescription, search } from '../../store/actions/todo'
+import { changeDescription, search, add } from '../../store/actions/todo'
 
 const Form = props => {
+    const { description, add, search, changeDescription } = props
+
     useEffect(() => {
-        props.search()
+        search()
     }, [])
+
+    const handleAdd = () => {
+        add(props.description).then(() => {
+            search()
+        })
+    }
 
     const keyHandler = (e) => {
         if(e.key === 'Enter') {
-            e.shiftKey ? props.handleSearch() : props.handleAdd()
+            e.shiftKey ? search() : handleAdd()
         } else if (e.key === 'Escape') {
             props.handleClear()
         }
@@ -27,15 +35,15 @@ const Form = props => {
                         id="description" 
                         className="form-control" 
                         placeholder="Adicione uma tarefa"
-                        value={props.description}
-                        onChange={e => props.changeDescription(e.target.value)}
+                        value={description}
+                        onChange={e => changeDescription(e.target.value)}
                         onKeyUp={keyHandler}
                     />
                 </GridColumn>
     
                 <GridColumn cols="12 3 2" className="col-sm-12 col-md-3 col-lg-2">
-                    <IconButton style="primary" icon="plus" onClick={props.handleAdd}/>
-                    <IconButton style="info" icon="search" onClick={props.handleSearch}/>
+                    <IconButton style="primary" icon="plus" onClick={handleAdd}/>
+                    <IconButton style="info" icon="search" onClick={() => search(description)}/>
                     <IconButton style="light" icon="close" onClick={props.handleClear}/>
                 </GridColumn>
             </div>
@@ -44,6 +52,6 @@ const Form = props => {
 }
 
 const mapStateToProps = (state) => ({ description: state.todo.description })
-const mapDispatchToProps = (dispatch) => bindActionCreators({ changeDescription, search }, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ changeDescription, search, add }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form)

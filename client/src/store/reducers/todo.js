@@ -12,6 +12,8 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         list: action.payload.data,
       };
+    case "TODO_CREATED":
+      return { ...state, description: "" };
     default:
       return INITIAL_STATE;
   }
