@@ -28,6 +28,11 @@ export default (state = INITIAL_STATE, action) => {
           return item._id === action.payload._id ? action.payload : item;
         }),
       };
+    case "TODO_REMOVED":
+      return {
+        ...state,
+        list: state.list.filter((item) => item._id !== action.payload),
+      };
     default:
       return INITIAL_STATE;
   }

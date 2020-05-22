@@ -42,3 +42,11 @@ export function markAsPending(id) {
     });
   };
 }
+
+export function remove(id) {
+  return (dispatch) => {
+    axios.delete(`${URL}/${id}`).then(() => {
+      dispatch({ type: "TODO_REMOVED", payload: id });
+    });
+  };
+}
