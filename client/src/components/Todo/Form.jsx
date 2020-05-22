@@ -12,15 +12,9 @@ const Form = props => {
         search()
     }, [])
 
-    const handleAdd = () => {
-        add(props.description).then(() => {
-            search()
-        })
-    }
-
     const keyHandler = (e) => {
         if(e.key === 'Enter') {
-            e.shiftKey ? search() : handleAdd()
+            e.shiftKey ? search() : add(description)
         } else if (e.key === 'Escape') {
             props.handleClear()
         }
@@ -42,7 +36,7 @@ const Form = props => {
                 </GridColumn>
     
                 <GridColumn cols="12 3 2" className="col-sm-12 col-md-3 col-lg-2">
-                    <IconButton style="primary" icon="plus" onClick={handleAdd}/>
+                    <IconButton style="primary" icon="plus" onClick={() => add(description)}/>
                     <IconButton style="info" icon="search" onClick={() => search(description)}/>
                     <IconButton style="light" icon="close" onClick={props.handleClear}/>
                 </GridColumn>

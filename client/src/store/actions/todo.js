@@ -18,9 +18,10 @@ export function search() {
 }
 
 export function add(description) {
-  const request = axios.post(URL, { description });
-  return {
-    type: "TODO_CREATED",
-    payload: request,
+  return (dispatch) => {
+    axios
+      .post(URL, { description })
+      .then(({ data }) => dispatch({ type: "TODO_CREATED", paylaod: data }))
+      .then(() => dispatch(search()));
   };
 }
