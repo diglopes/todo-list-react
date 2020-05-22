@@ -9,8 +9,9 @@ export function changeDescription(description) {
   };
 }
 
-export function search() {
-  const request = axios.get(`${URL}?sort=-createdAt`);
+export function search(searchTerm) {
+  const query = searchTerm ? `&description__regex=/${searchTerm}/i` : "";
+  const request = axios.get(`${URL}?sort=-createdAt${query}`);
   return {
     type: "TODO_SEARCHED",
     payload: request,
