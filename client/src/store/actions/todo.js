@@ -34,3 +34,11 @@ export function markAsDone(id) {
     });
   };
 }
+
+export function markAsPending(id) {
+  return (dispatch) => {
+    axios.put(`${URL}/${id}`, { done: false }).then(({ data }) => {
+      dispatch({ type: "MARKED_AS_PENDING", payload: data });
+    });
+  };
+}

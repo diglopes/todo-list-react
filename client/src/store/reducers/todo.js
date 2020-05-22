@@ -21,6 +21,13 @@ export default (state = INITIAL_STATE, action) => {
           return item._id === action.payload._id ? action.payload : item;
         }),
       };
+    case "MARKED_AS_PENDING":
+      return {
+        ...state,
+        list: state.list.map((item) => {
+          return item._id === action.payload._id ? action.payload : item;
+        }),
+      };
     default:
       return INITIAL_STATE;
   }
